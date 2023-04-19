@@ -1,21 +1,53 @@
 import Input from "@/components/input";
 import { SetStateAction, useCallback, useState } from "react";
+import axios from "axios";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/router";
+
+import { FcGoogle } from "react-icons/fc";
+import { FaGithub } from "react-icons/fa";
 
 const auth = () => {
+  const Router = useRouter();
+
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPasswrord] = useState("");
   const [variant, setVariant] = useState("Login");
 
   const toggle = useCallback(() => {
-    setVariant((currentVariant) =>
-      currentVariant === "Login" ? "Register" : "Login"
-    );
+    setVariant((currentVariant) => (currentVariant === "Login" ? "Register" : "Login"));
   }, []);
 
-  const login = useCallback(() => {}, []);
+  const login = useCallback(async () => {
+    try {
+      const response = await signIn("Credentials", {
+        email,
+        password,
+        redirect: false,
+      });
 
-  const register = useCallback(() => {}, []);
+      if (response?.status === 200) {
+        Router.push("/");
+      }
+    } catch (error) {
+      console.log();
+    }
+  }, [email, password, Router]);
+
+  const register = useCallback(async () => {
+    try {
+      await axios.post("/api/register", {
+        name,
+        email,
+        password,
+      });
+
+      await login();
+    } catch (error) {
+      console.log();
+    }
+  }, [name, email, password]);
 
   return (
     <div className="relative h-full w-full bg-[url('/images/hero.jpg')] bg-no-repeat bg-center bg-fixed">
@@ -25,9 +57,7 @@ const auth = () => {
         </nav>
         <div className="flex justify-center">
           <div className=" bg-black bg-opacity-70 p-16 self-center lg:w-2/5 lg:max-w-md rounded-md w-full mt-16">
-            <h2 className="text-white text-4xl mb-8 font-semibold">
-              {variant}
-            </h2>
+            <h2 className="text-white text-4xl mb-8 font-semibold">{variant}</h2>
             <div className="flex flex-col gap-4">
               {variant === "Register" && (
                 <Input
@@ -77,13 +107,58 @@ const auth = () => {
             >
               {variant}
             </button>
-            <p className="text-neutral-500 mt-12">
-              {variant === "Login" ? "First time?" : "Already have an account?"}
-            </p>
-            <span
-              onClick={toggle}
-              className="text-white ml-1 hover:underline cursor-pointer"
+            <div
+              className="
+                flex
+                flex-row
+                items-center
+                gap-4
+                mt-8
+                justify-center
+            "
             >
+              <div
+                className="
+                w-10
+                h-10
+                bg-white
+                rounded-full
+                flex
+                items-center
+                justify-center
+                cursor-pointer
+                hover:opacity-80
+                transition
+              "
+                onClick={() => {
+                  signIn("google", { callbackUrl: "/" });
+                }}
+              >
+                <FcGoogle size={30} />
+              </div>
+              <div
+                className="
+                w-10
+                h-10
+                bg-white
+                rounded-full
+                flex
+                items-center
+                justify-center
+                cursor-pointer
+                hover:opacity-80
+                transition
+              "
+                onClick={() => {
+                  signIn("github", { callbackUrl: "/" });
+                }}
+              >
+                <FaGithub size={30} />
+              </div>
+            </div>
+
+            <p className="text-neutral-500 mt-12">{variant === "Login" ? "First time?" : "Already have an account?"}</p>
+            <span onClick={toggle} className="text-white ml-1 hover:underline cursor-pointer">
               {variant === "Login" ? "Create an account" : "Log in"}
             </span>
           </div>
