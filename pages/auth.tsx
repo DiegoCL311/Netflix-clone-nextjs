@@ -24,16 +24,12 @@ const auth = () => {
       const response = await signIn("Credentials", {
         email,
         password,
-        redirect: false,
+        callbackUrl: "/profiles",
       });
-
-      if (response?.status === 200) {
-        Router.push("/");
-      }
     } catch (error) {
       console.log();
     }
-  }, [email, password, Router]);
+  }, [email, password]);
 
   const register = useCallback(async () => {
     try {
@@ -131,7 +127,7 @@ const auth = () => {
                 transition
               "
                 onClick={() => {
-                  signIn("google", { callbackUrl: "/" });
+                  signIn("google", { callbackUrl: "/profiles" });
                 }}
               >
                 <FcGoogle size={30} />
@@ -150,7 +146,7 @@ const auth = () => {
                 transition
               "
                 onClick={() => {
-                  signIn("github", { callbackUrl: "/" });
+                  signIn("github", { callbackUrl: "/profiles" });
                 }}
               >
                 <FaGithub size={30} />

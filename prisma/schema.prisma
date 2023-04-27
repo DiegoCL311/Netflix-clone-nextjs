@@ -17,8 +17,8 @@ model User {
   email          String?   @unique
   emailVerified  DateTime?
   hashedPassword String?
-  createdAt      DateTime  @default(now())
-  updatedAt      DateTime  @updatedAt
+  createdAt      DateTime? @default(now())
+  updatedAt      DateTime? @default(now()) @updatedAt
   favoritedIds   String[]  @db.ObjectId
   sessions       Session[]
   accounts       Account[]
@@ -39,8 +39,8 @@ model Account {
   session_state     String? @db.String
   user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @default(now()) @updatedAt
 
   @@unique([provider, providerAccountId])
 }
@@ -52,8 +52,8 @@ model Session {
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @default(now()) @updatedAt
 }
 
 model verificationToken {
@@ -62,8 +62,8 @@ model verificationToken {
   token      String   @unique
   expires    DateTime
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @default(now()) @updatedAt
 
   @@unique([identifier, token])
 }
@@ -74,9 +74,9 @@ model Movie {
   description  String
   videoUrl     String
   thumbnailUrl String
-  Genre        String
+  genre        String
   duration     String
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @default(now()) @updatedAt
 }
