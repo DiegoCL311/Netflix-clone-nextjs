@@ -7,7 +7,9 @@ import { useRouter } from "next/router";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 
-const auth = () => {
+interface authProps {}
+
+const Auth: React.FC<authProps> = ({}) => {
   //const Router = useRouter();
 
   const [email, setEmail] = useState("");
@@ -164,4 +166,4 @@ const auth = () => {
   );
 };
 
-export default auth;
+export default Auth;
