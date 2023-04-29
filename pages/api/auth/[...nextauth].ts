@@ -32,7 +32,6 @@ export const authOptions: AuthOptions = {
         }
 
         const isValid = await bcrypt.compare(credentials.password, user.hashedPassword);
-        console.log("2", isValid);
 
         if (!isValid) {
           throw new Error("Invalid password");
@@ -53,7 +52,6 @@ export const authOptions: AuthOptions = {
   pages: {
     signIn: "/auth",
   },
-  debug: true,
   adapter: PrismaAdapter(prismadb),
   session: {
     strategy: "jwt",

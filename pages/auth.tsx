@@ -3,6 +3,7 @@ import { SetStateAction, useCallback, useState } from "react";
 import axios from "axios";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
@@ -43,15 +44,15 @@ const Auth: React.FC<authProps> = ({}) => {
 
       await login();
     } catch (error) {
-      console.log();
+      console.log(error);
     }
-  }, [name, email, password]);
+  }, [name, email, password, login]);
 
   return (
     <div className="relative h-full w-full bg-[url('/images/hero.jpg')] bg-no-repeat bg-center bg-fixed">
       <div className="bg-black w-full h-full lg:bg-opacity-50">
         <nav className="px-12 py-5">
-          <img src="/images/logo.png" alt="logo" className="h-12" />
+          <Image src="/images/logo.png" alt="logo" className="h-12" />
         </nav>
         <div className="flex justify-center">
           <div className=" bg-black bg-opacity-70 p-16 self-center lg:w-2/5 lg:max-w-md rounded-md w-full mt-16">
