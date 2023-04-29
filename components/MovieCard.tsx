@@ -30,16 +30,15 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
               <BsFillPlayFill size={20} />
             </div>
           </div>
-
           <p className="text-green-400 font-semibold mt-4">
             New<span className="text-white font-semibold">2023</span>
-            <div className="flex flex-row mt-4 gap-2 items-center">
-              <p className="text-white text-[10px] lg:text-sm">{data.duration}</p>
-            </div>
-            <div className="flex flex-row mt-4 gap-2 items-center">
-              <p className="text-white text-[10px] lg:text-sm">{data.genre}</p>
-            </div>
           </p>
+          <div className="flex flex-row mt-4 gap-2 items-center">
+            <p className="text-white text-[10px] lg:text-sm">{data.duration}</p>
+          </div>
+          <div className="flex flex-row mt-4 gap-2 items-center">
+            <p className="text-white text-[10px] lg:text-sm">{data.genre}</p>
+          </div>
         </div>
       </div>
     </div>

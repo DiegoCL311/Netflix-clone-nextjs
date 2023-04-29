@@ -8,10 +8,10 @@ const Billboard: React.FC<BillboardProps> = ({}) => {
   const { data } = useBillboard();
 
   return (
-    <div className="relative h-[56.25vh]">
+    <div className="relative h-[80.25vh]">
       <video
         className="w-full
-            h-[56.25vh]
+            h-[80.25vh]
             object-cover
             brightness-[60%]"
         autoPlay

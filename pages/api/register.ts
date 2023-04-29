@@ -31,7 +31,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     },
   });
 
-  console.log("1", newUser);
 
   return res.status(200).json(newUser);
 }

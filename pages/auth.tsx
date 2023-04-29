@@ -8,7 +8,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 
 const auth = () => {
-  const Router = useRouter();
+  //const Router = useRouter();
 
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");

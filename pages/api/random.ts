@@ -13,17 +13,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     const movieCount = await prismadb.movie.count();
     const randomIndex = Math.floor(Math.random() * movieCount);
-    console.log("-----movieCount", movieCount);
-
-    console.log("-----randomIndex", randomIndex);
-    console.log(typeof randomIndex);
 
     const randomMovie = await prismadb.movie.findMany({
       take: 1,
       skip: randomIndex,
     });
-
-    console.log("-----randomMovie", randomMovie);
 
     res.status(200).json(randomMovie[0]);
   } catch (error) {

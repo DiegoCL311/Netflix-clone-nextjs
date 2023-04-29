@@ -15,17 +15,17 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > TOP_OFFSET) {
+      if (window.scrollY >= TOP_OFFSET) {
         setShowbackground(true);
       } else {
         setShowbackground(false);
       }
+    };
 
-      window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-      };
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
