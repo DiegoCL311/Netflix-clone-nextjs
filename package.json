@@ -1,4 +1,5 @@
 {
+  "postinstall": "npm run generate",
   "name": "n-clone",
   "version": "0.1.0",
   "private": true,
