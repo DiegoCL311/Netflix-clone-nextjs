@@ -49,7 +49,7 @@ export const authOptions: AuthOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
     }),
   ],
-  pages: {
+  pages: { 
     signIn: "/auth",
   },
   adapter: PrismaAdapter(prismadb),

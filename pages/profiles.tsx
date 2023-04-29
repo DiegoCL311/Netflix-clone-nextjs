@@ -38,7 +38,7 @@ const Profiles = () => {
                 <img src="/images/default-blue.png" alt="Profile" />
               </div>
 
-              <div className="mt-4 text-gray-400 text-2xl text-center group-hover:text-white">{user?.name}</div>
+              <div className="mt-4 text-gray-400 text-2xl text-center group-hover:text-white">{user?.name || ""}</div>
             </div>
           </div>
         </div>
