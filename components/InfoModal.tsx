@@ -51,8 +51,8 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
             <div className="absolute bottom-[10%] left-10">
               <p className="text-white text-3xl md:text-4xl  lg:text-5xl font-bold mb-8">{movie?.title}</p>
               <div className="flex flex-row gap-4 items-center">
-                <PlayButton movieId={movie?.movieId} />
-                <FavoriteButton movieId={movie?.movieId} />
+                <PlayButton movieId={movie?.id} />
+                <FavoriteButton movieId={movie?.id} />
               </div>
             </div>
           </div>
