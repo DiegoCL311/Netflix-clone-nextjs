@@ -1,7 +1,7 @@
 import useSWRImmutable from "swr/immutable";
 import fetcher from "@/lib/fetcher";
 
-const useBilboard = () => {
+const useBillboard = () => {
   const { data, error, isLoading } = useSWRImmutable("/api/random", fetcher);
 
   return {
@@ -11,4 +11,4 @@ const useBilboard = () => {
   };
 };
 
-export default useBilboard;
+export default useBillboard;

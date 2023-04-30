@@ -30,7 +30,7 @@ const Auth: React.FC<authProps> = ({}) => {
         callbackUrl: "/profiles",
       });
     } catch (error) {
-      console.log();
+      console.log(error);
     }
   }, [email, password]);
 
